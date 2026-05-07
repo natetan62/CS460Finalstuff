@@ -1,7 +1,7 @@
 # Development Log – The Torchbearer
 
-**Student Name:** ___________________________
-**Student ID:** ___________________________
+**Student Name:** Nathan Tan    
+**Student ID:** 827824355
 
 > Instructions: Write at least four dated entries. Required entry types are marked below.
 > Two to five sentences per entry is sufficient. Write entries as you go, not all in one
@@ -10,13 +10,12 @@
 
 ---
 
-## Entry 1 – [Date]: Initial Plan
+## Entry 1 – [5/6/2026]: Initial Plan
 
 > Required. Write this before writing any code. Describe your plan: what you will
 > implement first, what parts you expect to be difficult, and how you plan to test.
 
-_Your entry here._
-
+ After initially reading it I think obviously implementing a dijkstras to solve a directed graph problem ending at a specific point. Using a distance table and backtracking with what we learned the most opimtal so far and the lower bound estimating the lowest possible cost. I think the hardest part will be to workaround the backtracking and making sure its inputing the right things and additionally dealing with the many edge cases this specific assignment will produce.
 ---
 
 ## Entry 2 – [Date]: [Short description]
