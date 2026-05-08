@@ -18,13 +18,12 @@
  After initially reading it I think obviously implementing a dijkstras to solve a directed graph problem ending at a specific point. Using a distance table and backtracking with what we learned the most opimtal so far and the lower bound estimating the lowest possible cost. I think the hardest part will be to workaround the backtracking and making sure its inputing the right things and additionally dealing with the many edge cases this specific assignment will produce.
 ---
 
-## Entry 2 – [5//2026]: [Short description]
+## Entry 2 – [5/7/2026]: [Short description]
 
 > Required. At least one entry must describe a bug, wrong assumption, or design change
 > you encountered. Describe what went wrong and how you resolved it.
 
-_Your entry here._
-
+One assumption I had was putting the exit node in the select sources but the person with the tourch wouldnt depart or leave from there so that was not an option.
 ---
 
 ## Entry 3 – [Date]: [Short description]

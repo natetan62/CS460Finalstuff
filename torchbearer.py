@@ -33,16 +33,19 @@ def explain_problem():
         Must match what you wrote in README Part 1.
 
     TODO
-    ""- **Why a single shortest-path run from S is not enough:**
-    -A single shortest path is not enough because it findds the cheapest path to the node indivudally but not the overall cost.
-     -We need the cheapest cost overall 
+    """
+    return(
+        """- **Why a single shortest-path run from S is not enough:** 
+        -A single shortest path is not enough because it findds the cheapest path to the node indivudally but not the overall cost.
+         -We need the cheapest cost overall 
 
-    - **What decision remains after all inter-location costs are known:**
-    - the decision that remains even after the costs are known is the order of chambers to visit with the relics. Each different order of vist would lead to different fuel costs.
+        - **What decision remains after all inter-location costs are known:**
+        - the decision that remains even after the costs are known is the order of chambers to visit with the relics. Each different order of vist would lead to different fuel costs.
 
-    - **Why this requires a search over orders (one sentence):**
-    -This requeires serch over orders because there isnt a rule or order that can find the optimal path right away. we need to find the globally chepaest ordering after exploring and pruning.""
-    return "TODO"
+        - **Why this requires a search over orders (one sentence):**
+        -This requeires serch over orders because there isnt a rule or order that can find the optimal path right away. we need to find the globally chepaest ordering after exploring and pruning."""
+        )
+
 
 
 # =============================================================================
@@ -60,11 +63,16 @@ def select_sources(spawn, relics, exit_node):
     Returns
     -------
     list[node]
-        No duplicates. Order does not matter.
-
-    TODO
+       # No duplicates. Order does not matter.
     """
-    pass
+    # TODO
+    
+    startingNodes = set([spawn] +list(relics))
+    return list(startingNodes)
+   
+
+   
+    
 
 
 def run_dijkstra(graph, source):
@@ -81,10 +89,30 @@ def run_dijkstra(graph, source):
         Minimum cost from source to every node in graph.
         Unreachable nodes map to float('inf').
 
-    TODO
+        #TODO
     """
-    pass
 
+    distance = {}
+    for node in graph:
+        distance[node] = float('inf') #initalize the graph to nothinggg not discovered
+    distance[source] = 0
+
+    minHeap = [(0, source)]
+    while minHeap:
+        entry = heapq.heappop(minHeap) #pop the smallest distance
+        fuel= entry[0]
+        current =entry[1]
+        
+        if fuel> distance[current]:
+            continue
+
+        for v, weight in graph[current]:
+            discovered= distance[current]+ weight
+            if discovered<distance[v]:
+                distance[v] =discovered
+                heapq.heappush(minHeap,(discovered,v))
+        
+    return distance
 
 def precompute_distances(graph, spawn, relics, exit_node):
     """
@@ -103,7 +131,11 @@ def precompute_distances(graph, spawn, relics, exit_node):
 
     TODO
     """
-    pass
+    distanceTable={}
+    for source in select_sources(spawn,relics,exit_node): #djisktra from each source
+        for dest, cost in run_dijkstra(graph,source).items():
+            distanceTable[source,dest]= cost
+    return distanceTable
 
 
 # =============================================================================
