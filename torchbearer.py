@@ -152,7 +152,44 @@ def dijkstra_invariant_check():
 
     TODO
     """
-    return "TODO"
+    return("""## Part 3: Algorithm Correctness
+
+    >Document your understanding of why Dijkstra produces correct distances.
+    > Bullet points and short sentences throughout. No paragraphs.
+
+    ### Part 3a: What the Invariant Means
+
+    > Two bullets: one for finalized nodes, one for non-finalized nodes.
+    >   Do not copy the invariant text from the spec.
+
+    - **For nodes already finalized (in S):**
+    -Distance[v] would represent the minimum fuel cost from the sources to whatever node v is. 
+    -This should be the optimal. 
+
+    - **For nodes not yet finalized (not in S):**
+    -distance[u] is theshortest ditance djisktra has discovred.
+    -It takes the shortest discovered so far but it can be replace by a shorter one.
+    ### Part 3b: Why Each Phase Holds
+
+    > One to two bullets per phase. Maintenance must mention nonnegative edge weights.
+
+    - **Initialization : why the invariant holds before iteration 1:**
+    -At the very beggining of the itertation, distance is 0 so it is the shortest path and there is no path discovered yet
+    -So the invariant holds because the initatizliation holds.
+    - **Maintenance : why finalizing the min-dist node is always correct:**
+    -At the beginning of the iterations this would hold because the node is not set, it is the smallest current u so it should be the same as the optimal. 
+    -So therefore at each iterations the distance we see is already optimal and adding u to the path would maintain the invariant for the rest of the nodes.
+
+    - **Termination : what the invariant guarantees when the algorithm ends:**
+    -After ittering through all the nodes, every node is either added to the optimal shortest path distance from spawn or the node would be unreachable the dictionary.
+    ### Part 3c: Why This Matters for the Route Planner
+
+    > One sentence connecting correct distances to correct routing decisions.
+
+    -This matters for the route planner because it needs to use the distance to see the actual shortest path to see how much fuel is used.
+    -It has to be the total route that is the cheapest and has enough fuel to make it through.
+
+                """)
 
 
 # =============================================================================
