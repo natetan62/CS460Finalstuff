@@ -206,7 +206,32 @@ def explain_search():
 
     TODO
     """
-    return "TODO"
+    return("""## Part 4: Search Design
+
+    ### Why Greedy Fails
+
+    > State the failure mode. Then give a concrete counter-example using specific node names
+    > or costs (you may use the illustration example from the spec). Three to five bullets.
+
+    - **The failure mode:** The failure mode for greedy would be to just moving to the closet exit and not really considering the exit. Cheap from one exit does not mean it is cheaper overall to the exit you have to look at the whole thing.
+    - **Counter-example setup:** From the illustration exampe from the sepcd we have the relic bcd. from s spawn to b is 1, to c is 2, to d is 2. from b to d is 1, from b to t is 1, from b to c is 100.  From c to b is 1, c to T is 1. From d to b is 1, d to c is1, d to t is 100.
+    - **What greedy picks:**  Greedy would pick to b frist becaues its cheapest then d then c and then T witha  total cost 103.
+    - **What optimal picks:** Optimal would pick b then d then c and then t because going from c t to 1 would only cost 1 instead of going the otehr way.
+    -**Why greedy loses:** Greedy loses because it just goes to the nearest relic needed to be collected. It chooses D before going to c because it did not know that picking C last would make it impossbily to dodge the 100 choice. The optimal unlike creedy considers everything before picking
+
+    ### What the Algorithm Must Explore
+
+    -The algorithm must eplore the order of every relic and going through the dungeon and return with the lowest total fuel cost to the exit.
+    ---
+
+
+
+
+    
+    """
+
+
+    )
 
 
 # =============================================================================
