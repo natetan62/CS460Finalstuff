@@ -132,7 +132,7 @@
 | Component | Variable name in code | Data type | Description |
 |---|---|---|---|
 | Current location | currentLocation| node| The location the torchbearer is at the in the search|
-| Relics already collected |relicsLeft | set|The relics still yet not visited or not collected |
+| Relics already collected |relicsreamning | set|The relics still yet not visited or not collected |
 | Fuel cost so far |fuelUsed |float |The amount of fuel used from spawn to the current location. |
 
 ### Part 5b: Data Structure for Visited Relics

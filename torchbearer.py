@@ -256,9 +256,12 @@ def find_optimal_route(dist_table, spawn, relics, exit_node):
         (minimum_fuel_cost, ordered_relic_list)
         Returns (float('inf'), []) if no valid route exists.
 
-    TODO
+    
     """
-    pass
+    best = [float('inf'), []] #the best relic order total cost found so far
+    relics_remaining = set(relics) #holds marking and unmarking etc
+    _explore(dist_table, current_loc = spawn, relics_remaining = relics_remaining, relics_visited_order =[], cost_so_far = 0.0, exit_node = exit_node, best = best )
+    return(best[0], best[1])
 
 
 def _explore(dist_table, current_loc, relics_remaining, relics_visited_order,
@@ -283,15 +286,14 @@ def _explore(dist_table, current_loc, relics_remaining, relics_visited_order,
     None
         Updates best in place.
 
-    TODO
+    
     Implement: base case, pruning, recursive case, backtracking.
 
     REQUIRED: Add a 1-2 sentence comment near your pruning condition
     explaining why it is safe (cannot skip the optimal solution).
     This comment is graded.
     """
-    pass
-
+    
 
 # =============================================================================
 # PIPELINE
