@@ -26,9 +26,9 @@
 One assumption I had was putting the exit node in the select sources but the person with the tourch wouldnt depart or leave from there so that was not an option.
 ---
 
-## Entry 3 – [Date]: [Short description]
+## Entry 3 – [5/13]: [Trying to figure out search and pruning]
 
-_Your entry here._
+-This has genuinely made my head hurt and taken a good chunk of time. I think I figured out the base case, but implementing the lower bound is kind of tricky while trying to maange the recursive cases and back tracking.
 
 ---
 

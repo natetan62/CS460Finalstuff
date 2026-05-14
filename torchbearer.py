@@ -293,6 +293,14 @@ def _explore(dist_table, current_loc, relics_remaining, relics_visited_order,
     explaining why it is safe (cannot skip the optimal solution).
     This comment is graded.
     """
+    if not relics_remaining: #base case all relics are collected already
+        total_cost= cost_so_far + dist_table.get((current_loc, exit_node),float('inf')) #seeing if the route is even valid and looking up the fuel cost to the exit
+        if total_cost<best[0]: #is this THE BEST?
+            best[0] =total_cost #hold on potential save it
+            best[1]=list(relics_visited_order)
+        return
+    
+
     
 
 # =============================================================================

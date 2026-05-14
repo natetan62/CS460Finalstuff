@@ -163,23 +163,23 @@
 
 > Three bullets.
 
-- **What is tracked:** _Your answer here._
-- **When it is used:** _Your answer here._
-- **What it allows the algorithm to skip:** _Your answer here._
+- **What is tracked:** A list of best cost and order and best cost is the least amount of fuel cost for a route from spawn to the relics and exit that is found so far. Best order is the order the relics are visited. 
+- **When it is used:** It is used at every recursive call the current iteration of cost so far and the reamin cost is compared with the best, and compared to the base case when there is a complete path that is better it will update best
+- **What it allows the algorithm to skip:** it allows the alogrithm to skip routes that already exceeds best because it will not get any better there is no point in going all the way for those.
 
 ### Part 6b: Lower Bound Estimation
 
 > Three bullets.
 
-- **What information is available at the current state:** _Your answer here._
-- **What the lower bound accounts for:** _Your answer here._
-- **Why it never overestimates:** _Your answer here._
+- **What information is available at the current state:** The information avaiable is the distance table for route we know, the costsofar or the fuel used already and the current location and the relics that still need to be found.
+- **What the lower bound accounts for:** The lower bound accounts for seeing the shortest distant to the next relic and adds it and ignores the rest because it would continue to increase the bound
+- **Why it never overestimates:** It never overestimates because the going to the next relic is has to be the least amount of fuel used the torchbearer can make. The lower bound is less than or equal to the true reaming cost should always hold because it already includes visiting the other relics. 
 
 ### Part 6c: Pruning Correctness
 
 > One to two bullets. Explain why pruning is safe.
 
-- _Your answer here._
+- Pruning is safe because the cost and lower bound has to be greater than or equal to the best solution so far because it cannot be better than what we already found as the best. The pruning condition looks at the lower bound and it is not possible for optimal to be pruned or skipped.
 
 ---
 
