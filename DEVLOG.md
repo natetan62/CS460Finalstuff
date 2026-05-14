@@ -3,11 +3,6 @@
 **Student Name:** Nathan Tan    
 **Student ID:** 827824355
 
-> Instructions: Write at least four dated entries. Required entry types are marked below.
-> Two to five sentences per entry is sufficient. Write entries as you go, not all in one
-> sitting. Graders check that entries reflect genuine work across multiple sessions.
-> Delete all blockquotes before submitting.
-
 ---
 
 ## Entry 1 – [5/6/2026]: Initial Plan
@@ -32,13 +27,12 @@ One assumption I had was putting the exit node in the select sources but the per
 
 ---
 
-## Entry 4 – [Date]: Post-Implementation Reflection
+## Entry 4 – [5/14]: Post-Implementation Reflection
 
 > Required. Written after your implementation is complete. Describe what you would
 > change or improve given more time.
 
-_Your entry here._
-
+If i had more time I would try to clean up or make the lower bound better. It only goes to the next cheapest relic. I would add a tighter bound that can estimate teh cost of all remaining relics and the exit. The design I had worked relatively well I think the flat dictionry was a good use for this problem but im sure there is a better design.
 ---
 
 ## Final Entry – [Date]: Time Estimate
@@ -47,12 +41,12 @@ _Your entry here._
 
 | Part | Estimated Hours |
 |---|---|
-| Part 1: Problem Analysis | |
-| Part 2: Precomputation Design | |
-| Part 3: Algorithm Correctness | |
-| Part 4: Search Design | |
-| Part 5: State and Search Space | |
-| Part 6: Pruning | |
-| Part 7: Implementation | |
-| README and DEVLOG writing | |
-| **Total** | |
+| Part 1: Problem Analysis |1-1.5 hrs reading and then deciding the plan |
+| Part 2: Precomputation Design | 1 hr |
+| Part 3: Algorithm Correctness | 1 hr|
+| Part 4: Search Design | 45 min ish |
+| Part 5: State and Search Space | 45 min ish|
+| Part 6: Pruning |2hr |
+| Part 7: Implementation |8 ish hrs |
+| README and DEVLOG writing |2 hrs |
+| **Total** | 15ish hours across a week so maybe more idk these are rough estimate because I did a little bit each day|

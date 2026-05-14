@@ -4,17 +4,10 @@
 **Student ID:** 827824355
 **Course:** CS 460 – Algorithms | Spring 2026
 
-> This README is your project documentation. Write it the way a developer would document
-> their design decisions , bullet points, brief justifications, and concrete examples where
-> required. You are not writing an essay. You are explaining what you built and why you built
-> it that way. Delete all blockquotes like this one before submitting.
 
 ---
 
 ## Part 1: Problem Analysis
-
-> Document why this problem is not just a shortest-path problem. Three bullet points, one
-> per question. Each bullet should be 1-2 sentences max.
 
 - **Why a single shortest-path run from S is not enough:**
  -A single shortest path is not enough because it findds the cheapest path to the node indivudally but not the overall cost.
@@ -33,7 +26,7 @@
 
 ### Part 2a: Source Selection
 
-> List the source node types as a bullet list. For each, one-line reason.
+
 
 | Source Node Type | Why it is a source |
 |---|---|
@@ -42,11 +35,10 @@
 
 ### Part 2b: Distance Storage
 
-> Fill in the table. No prose required.
 
 | Property | Your answer |
 |---|---|
-| dictionary, dict |(dict[node, node])] |
+| Data structure |dict[tuple[node, node]] |
 | What the keys represent | The group of source and desntations of the path from spawn to a relic or relic to another or to the exit|
 | What the values represent | The values represent the lowest cost of fule used from a source to the destiation  |
 | Lookup time complexity | o(1)|
@@ -54,7 +46,6 @@
 
 ### Part 2c: Precomputation Complexity
 
-> State the total complexity and show the arithmetic. Two to three lines max.
 
 - **Number of Dijkstra runs:** We need to run Dijkstra once for every place we can leave from. 1 run from spawn and then k amount of runs after from each relic so k + 1
 - **Cost per run:** O(elogn). e is the # of edges and n is # of nodes with a binary min heap
@@ -65,13 +56,10 @@
 
 ## Part 3: Algorithm Correctness
 
-> Document your understanding of why Dijkstra produces correct distances.
-> Bullet points and short sentences throughout. No paragraphs.
 
 ### Part 3a: What the Invariant Means
 
-> Two bullets: one for finalized nodes, one for non-finalized nodes.
-> Do not copy the invariant text from the spec.
+
 
 - **For nodes already finalized (in S):**
   -Distance[v] would represent the minimum fuel cost from the sources to whatever node v is. 
@@ -82,23 +70,20 @@
   -It takes the shortest discovered so far but it can be replace by a shorter one.
 ### Part 3b: Why Each Phase Holds
 
-> One to two bullets per phase. Maintenance must mention nonnegative edge weights.
 
 - **Initialization : why the invariant holds before iteration 1:**
   -At the very beggining of the itertation, distance is 0 so it is the shortest path and there is no path discovered yet
   -So the invariant holds because the initatizliation holds.
 - **Maintenance : why finalizing the min-dist node is always correct:**
-  -At the beginning of the iterations this would hold because the node is not set, it is the smallest current u so it should be the same as the optimal. 
+  -At the beginning of the iterations this would hold because all edge weights cannot be negative and  the node is not set so it is the smallest current u so it should be the same as the optimal. 
   -So therefore at each iterations the distance we see is already optimal and adding u to the path would maintain the invariant for the rest of the nodes.
 
 - **Termination : what the invariant guarantees when the algorithm ends:**
   -After ittering through all the nodes, every node is either added to the optimal shortest path distance from spawn or the node would be unreachable the dictionary.
 ### Part 3c: Why This Matters for the Route Planner
 
-> One sentence connecting correct distances to correct routing decisions.
 
-  -This matters for the route planner because it needs to use the distance to see the actual shortest path to see how much fuel is used.
-  -It has to be the total route that is the cheapest and has enough fuel to make it through.
+  -This matters for the route planner because it needs to use the distance to see the actual shortest path to see how much fuel is used and it has to be the total route that is the cheapest and has enough fuel to make it through.
 
 ---
 
@@ -106,8 +91,6 @@
 
 ### Why Greedy Fails
 
-> State the failure mode. Then give a concrete counter-example using specific node names
-> or costs (you may use the illustration example from the spec). Three to five bullets.
 
 - **The failure mode:** The failure mode for greedy would be to just moving to the closet exit and not really considering the exit. Cheap from one exit does not mean it is cheaper overall to the exit you have to look at the whole thing.
 - **Counter-example setup:** From the illustration exampe from the sepcd we have the relic bcd. from s spawn to b is 1, to c is 2, to d is 2. from b to d is 1, from b to t is 1, from b to c is 100.  From c to b is 1, c to T is 1. From d to b is 1, d to c is1, d to t is 100.
@@ -117,7 +100,6 @@
 
 ### What the Algorithm Must Explore
 
-> One bullet. Must use the word "order."
 
 -The algorithm must eplore the order of every relic and going through the dungeon and return with the lowest total fuel cost to the exit.
 ---
@@ -126,18 +108,17 @@
 
 ### Part 5a: State Representation
 
-> Document the three components of your search state as a table.
-> Variable names here must match exactly what you use in torchbearer.py.
+
 
 | Component | Variable name in code | Data type | Description |
 |---|---|---|---|
-| Current location | currentLocation| node| The location the torchbearer is at the in the search|
-| Relics already collected |relicsreamning | set|The relics still yet not visited or not collected |
-| Fuel cost so far |fuelUsed |float |The amount of fuel used from spawn to the current location. |
+| Current location | current_loc| node| The location the torchbearer is at the in the search|
+| Relics already collected |relics_reamning | set|The relics still yet not visited or not collected |
+| Fuel cost so far |cost_so_far |float |The amount of fuel used from spawn to the current location. |
 
 ### Part 5b: Data Structure for Visited Relics
 
-> Fill in the table.
+
 
 | Property | Your answer |
 |---|---|
@@ -150,7 +131,6 @@
 
 ### Part 5c: Worst-Case Search Space
 
-> Two bullets.
 
 - **Worst-case number of orders considered:**  The worst case number of orders considered would be o(k!)
 - **Why:** The worst case search would be k recursove choices at least level so the wrost case before the pruning would be o(k!)
@@ -161,7 +141,6 @@
 
 ### Part 6a: Best-So-Far Tracking
 
-> Three bullets.
 
 - **What is tracked:** A list of best cost and order and best cost is the least amount of fuel cost for a route from spawn to the relics and exit that is found so far. Best order is the order the relics are visited. 
 - **When it is used:** It is used at every recursive call the current iteration of cost so far and the reamin cost is compared with the best, and compared to the base case when there is a complete path that is better it will update best
@@ -169,7 +148,6 @@
 
 ### Part 6b: Lower Bound Estimation
 
-> Three bullets.
 
 - **What information is available at the current state:** The information avaiable is the distance table for route we know, the costsofar or the fuel used already and the current location and the relics that still need to be found.
 - **What the lower bound accounts for:** The lower bound accounts for seeing the shortest distant to the next relic and adds it and ignores the rest because it would continue to increase the bound
@@ -177,15 +155,26 @@
 
 ### Part 6c: Pruning Correctness
 
-> One to two bullets. Explain why pruning is safe.
-
 - Pruning is safe because the cost and lower bound has to be greater than or equal to the best solution so far because it cannot be better than what we already found as the best. The pruning condition looks at the lower bound and it is not possible for optimal to be pruned or skipped.
 
 ---
 
 ## References
 
-> Bullet list. If none beyond lecture notes, write that.
+-Lecture notes
+- Dijkstra's Algorithm – Wikipedia overview of the algorithm, invariant, and complexity:
+  https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
 
-- _Your references here._
+- Python heapq documentation – used for the min-heap priority queue in run_dijkstra:
+  https://docs.python.org/3/library/heapq.html
+
+- Backtracking – GeeksforGeeks overview of recursive backtracking with state restoration:
+  https://www.geeksforgeeks.org/backtracking-algorithms/
+
+- Branch and Bound – explanation of best-so-far pruning and admissible lower bounds:
+  https://en.wikipedia.org/wiki/Branch_and_bound
+
+- Travelling Salesman Problem – background on why exhaustive search with pruning is needed
+  for combinatorial route optimization:
+  https://en.wikipedia.org/wiki/Travelling_salesman_problem
 

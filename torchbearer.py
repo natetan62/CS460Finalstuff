@@ -3,7 +3,7 @@ CS 460 – Algorithms: Final Programming Assignment
 The Torchbearer
 
 Student Name: Nathan Tan
-Student ID:   827824355
+Student ID: 827824355
 
 INSTRUCTIONS
 ------------
@@ -32,7 +32,6 @@ def explain_problem():
         Your Part 1 README answers, written as a string.
         Must match what you wrote in README Part 1.
 
-    TODO
     """
     return(
         """- **Why a single shortest-path run from S is not enough:** 
@@ -65,7 +64,7 @@ def select_sources(spawn, relics, exit_node):
     list[node]
        # No duplicates. Order does not matter.
     """
-    # TODO
+    
     
     startingNodes = set([spawn] +list(relics))
     return list(startingNodes)
@@ -89,7 +88,7 @@ def run_dijkstra(graph, source):
         Minimum cost from source to every node in graph.
         Unreachable nodes map to float('inf').
 
-        #TODO
+        
     """
 
     distance = {}
@@ -129,7 +128,7 @@ def precompute_distances(graph, spawn, relics, exit_node):
         Nested structure supporting dist_table[u][v] lookups
         for every source u your design requires.
 
-    TODO
+    
     """
     distanceTable={}
     for source in select_sources(spawn,relics,exit_node): #djisktra from each source
@@ -150,7 +149,7 @@ def dijkstra_invariant_check():
         Your Part 3 README answers, written as a string.
         Must match what you wrote in README Part 3.
 
-    TODO
+    
     """
     return("""## Part 3: Algorithm Correctness
 
@@ -204,7 +203,7 @@ def explain_search():
         Your Part 4 README answers, written as a string.
         Must match what you wrote in README Part 4.
 
-    TODO
+    
     """
     return("""## Part 4: Search Design
 
@@ -300,6 +299,25 @@ def _explore(dist_table, current_loc, relics_remaining, relics_visited_order,
             best[1]=list(relics_visited_order)
         return
     
+    cheapestNextRelic = min(dist_table.get((current_loc,r), float('inf')) #chepaest distance to remaing relics
+                            for r in relics_remaining)
+    
+    if cost_so_far + cheapestNextRelic >= best[0]: #pruning correctness, only prune when it is is not possible for it to optimal or the best anymore this is part of the pruning afety
+        return
+    
+    for rel in list(relics_remaining): #recursive cases
+        fuelCost =dist_table.get((current_loc,rel), float('inf'))
+
+        if fuelCost== float('inf'): #dead end cant reach
+            continue
+        relics_remaining.remove(rel) #updating
+        relics_visited_order.append(rel)
+
+        _explore(dist_table, current_loc = rel,relics_remaining=relics_remaining,relics_visited_order = relics_visited_order, cost_so_far=cost_so_far + fuelCost, exit_node=exit_node, best = best)
+        
+        relics_remaining.add(rel) #going back 
+        relics_visited_order.pop()
+    
 
     
 
@@ -322,9 +340,10 @@ def solve(graph, spawn, relics, exit_node):
         (minimum_fuel_cost, ordered_relic_list)
         Returns (float('inf'), []) if no valid route exists.
 
-    TODO
+    
     """
-    pass
+    dist_table= precompute_distances(graph,spawn, relics, exit_node)
+    return find_optimal_route(dist_table,spawn,relics,exit_node)
 
 
 # =============================================================================
